@@ -114,39 +114,40 @@ class _HomePageState extends State<HomePage> {
                   /// Pop up message if someone has won.
                   if (winner != '') {
                     Timer(const Duration(seconds: 1), () {
-                    showDialog<void>(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text(
-                            '$winner won!⭐️',
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 25,
-                              color: Color(0xff000000),
-                            ),
-                          ),
-                          actions: <Widget>[
-                            TextButton(
-                              onPressed: () {
-                                setState(() {
-                                  /// Resets game from start.
-                                  img = List<Image?>.filled(9, null);
-                                  hasTappedX = false;
-                                  hasTappedO = false;
-                                  game = List<String?>.filled(9, null);
-                                });
-                                Navigator.pop(context, 'Cancel');
-                              },
-                              child: const Text(
-                                'Cancel',
-                                style: TextStyle(color: Colors.lightBlue),
+                      showDialog<void>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text(
+                              '$winner won!⭐️',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 25,
+                                color: Color(0xff000000),
                               ),
-                            )
-                          ],
-                        );
-                      },
-                    ); });
+                            ),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    /// Resets game from start.
+                                    img = List<Image?>.filled(9, null);
+                                    hasTappedX = false;
+                                    hasTappedO = false;
+                                    game = List<String?>.filled(9, null);
+                                  });
+                                  Navigator.pop(context, 'Cancel');
+                                },
+                                child: const Text(
+                                  'Cancel',
+                                  style: TextStyle(color: Colors.lightBlue),
+                                ),
+                              )
+                            ],
+                          );
+                        },
+                      );
+                    });
                   }
                 },
                 child: DecoratedBox(
